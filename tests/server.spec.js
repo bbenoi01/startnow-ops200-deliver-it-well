@@ -37,4 +37,14 @@ describe('server/app.js', function() {
       done();
     });
   });
+
+  it('page says have you ever danced with the devil in the pale moonlight?', (done) => {
+    chai.request(server)
+      .get('/')
+      .end((err, res) => {
+        expect(err).not.exist;
+        expect(JSON.stringify(res.text)).to.contain('Have you ever danced with the devil in the pale moonlight?');
+        done();
+      });
+    });
 })
